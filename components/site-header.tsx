@@ -56,7 +56,9 @@ export function SiteHeader() {
     const update = () => {
       setScrolled(window.scrollY > 18);
       const sections = [...document.querySelectorAll<HTMLElement>(".home-main > section")];
-      const behindHeader = sections.find(section => { const box = section.getBoundingClientRect(); return box.top <= 44 && box.bottom > 44; });
+      const headerBox = menuButton.current?.getBoundingClientRect();
+      const headerMiddle = headerBox && headerBox.height > 0 ? headerBox.top + headerBox.height / 2 : 44;
+      const behindHeader = sections.find(section => { const box = section.getBoundingClientRect(); return box.top <= headerMiddle && box.bottom > headerMiddle; });
       setDarkSurface(["modulo", "alianzas", "socio", "fundadores"].includes(behindHeader?.id ?? ""));
       const current = sections.find(section => { const box = section.getBoundingClientRect(); return box.top <= innerHeight * .45 && box.bottom > innerHeight * .45; });
       const groups: Record<string, string> = { socio: "alianzas", fundadores: "proceso", expansion: "licencia", modulo: "producto", origen: "origen" };
@@ -64,7 +66,8 @@ export function SiteHeader() {
     };
     const frame = requestAnimationFrame(update);
     window.addEventListener("scroll", update, { passive: true });
-    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); };
+    window.addEventListener("resize", update);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); window.removeEventListener("resize", update); };
   }, []);
 
   return (

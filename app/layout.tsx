@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import "./polish.css";
@@ -13,6 +13,8 @@ import { LanguageProvider, SkipLink } from "@/components/language-provider";
 
 const serif = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-serif", display: "swap", weight: ["400", "500", "600"] });
 const sans = Manrope({ subsets: ["latin"], variable: "--font-sans-custom", display: "swap" });
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export const metadata: Metadata = {
   title: { default: "ShantiBond — La conexión profunda.", template: "%s | ShantiBond" },

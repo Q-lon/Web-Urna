@@ -13,7 +13,6 @@ export function SectionAlignment() {
     let accumulated = 0;
     let alignedSection: HTMLElement | undefined;
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
-    let touch: { x: number; y: number; section: HTMLElement; consumed: boolean } | undefined;
 
     const cancel = () => {
       clearTimeout(timer);
@@ -108,7 +107,8 @@ export function SectionAlignment() {
       if (!locked && !event.repeat) move(direction);
     };
     const anchorClick = (event: MouseEvent) => {
-      // Compact layouts use native anchors and CSS scroll-margin for the capsule.
+      if (!desktop.matches) return;
+      // Compact layouts use native anchors; each section reserves header space.
       // Keep the approved desktop slide transition exactly as before.
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null;
@@ -123,31 +123,6 @@ export function SectionAlignment() {
       const destination = target.getBoundingClientRect().top + scrollY;
       move(Math.sign(destination - scrollY), destination);
     };
-    // Use the same easing as desktop, but only capture a vertical swipe on a
-    // screen-sized section. Longer content, form controls and pinch zoom stay native.
-    const touchStart = (event: TouchEvent) => {
-      touch = undefined;
-      if (desktop.matches || event.touches.length !== 1 || document.querySelector('.site-header.menu-open')) return;
-      const target = event.target instanceof Element ? event.target : null;
-      if (target?.closest('a, button, input, textarea, select, [contenteditable=true]')) return;
-      const section = target?.closest<HTMLElement>('.home-main > section');
-      if (!section || section.scrollHeight > innerHeight + 2) return;
-      touch = { x: event.touches[0].clientX, y: event.touches[0].clientY, section, consumed: false };
-    };
-    const touchMove = (event: TouchEvent) => {
-      if (!touch || event.touches.length !== 1) { touch = undefined; return; }
-      const dy = touch.y - event.touches[0].clientY;
-      const dx = touch.x - event.touches[0].clientX;
-      if (Math.abs(dx) > Math.abs(dy)) { touch = undefined; return; }
-      if (Math.abs(dy) < 12) return;
-      event.preventDefault();
-      if (touch.consumed || Math.abs(dy) < 45) return;
-      touch.consumed = true;
-      const sections = [...document.querySelectorAll<HTMLElement>('.home-main > section')];
-      const next = sections[sections.indexOf(touch.section) + Math.sign(dy)];
-      if (next) { cancel(); move(Math.sign(dy), next.getBoundingClientRect().top + scrollY); }
-    };
-    const touchEnd = () => { touch = undefined; };
     const resize = () => {
       cancel();
       clearTimeout(resizeTimer);
@@ -159,10 +134,6 @@ export function SectionAlignment() {
       }, 120);
     };
     document.addEventListener("click", anchorClick);
-    window.addEventListener("touchstart", touchStart, { passive: true });
-    window.addEventListener("touchmove", touchMove, { passive: false });
-    window.addEventListener("touchend", touchEnd);
-    window.addEventListener("touchcancel", touchEnd);
     window.addEventListener("wheel", wheel, { passive: false });
     window.addEventListener("keydown", key);
     window.addEventListener("pointerdown", cancel);
@@ -172,10 +143,6 @@ export function SectionAlignment() {
       cancel();
       clearTimeout(resizeTimer);
       document.removeEventListener("click", anchorClick);
-      window.removeEventListener("touchstart", touchStart);
-      window.removeEventListener("touchmove", touchMove);
-      window.removeEventListener("touchend", touchEnd);
-      window.removeEventListener("touchcancel", touchEnd);
       window.removeEventListener("wheel", wheel);
       window.removeEventListener("keydown", key);
       window.removeEventListener("pointerdown", cancel);
