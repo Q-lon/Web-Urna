@@ -1,8 +1,8 @@
 export const siteConfig = {
-  brandName: "[NOMBRE DE MARCA]",
+  brandName: "ShantiBond",
   domain: null,
-  email: null,
-  phone: null,
+  email: "info@shantibond.com",
+  phone: "+54 911 6115-7358",
   whatsapp: null,
   instagram: null,
   address: null,

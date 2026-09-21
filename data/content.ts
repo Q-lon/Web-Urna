@@ -13,7 +13,7 @@ export const content = {
   },
   steps: [
     ["01", "Elegís la urna.", "Conocé los modelos conceptuales y encontrá una forma que dialogue con tu espacio."],
-    ["02", "Personalizás el recuerdo.", "Las posibilidades definitivas se comunicarán cuando sean validadas para cada modelo."],
+    ["02", "Personalizás el recuerdo.", "Elegí los detalles que mejor expresen la identidad de una historia única."],
     ["03", "Las imágenes acompañan su memoria.", "El display integrado suma una presencia visual a la historia compartida."],
   ],
   personalization: ["Terminación", "Material", "Color", "Detalle personal", "Contenido visual"],

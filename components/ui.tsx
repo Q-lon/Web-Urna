@@ -12,15 +12,13 @@ export function SectionHeading({ eyebrow, title, children, align = "left" }: { e
   </div>;
 }
 
-export function ProductCard({ product, index }: { product: Product; index: number }) {
+export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="product-card">
       <Link href={`/urnas/${product.slug}`} className="product-image-wrap">
-        <Image src={product.images[0]} alt={`Representación provisoria de ${product.name}`} fill sizes="(max-width: 760px) 92vw, 45vw" className="cover" />
-        <span className="prototype-badge">Imagen provisoria</span>
+        <Image src={product.images[0]} alt={`Vista de ${product.name}`} fill sizes="(max-width: 760px) 92vw, 45vw" className="cover" />
       </Link>
       <div className="product-card-copy">
-        <span className="product-index">{String(index + 1).padStart(2, "0")}</span>
         <div><h3>{product.name}</h3><p>{product.description}</p></div>
         <Link className="text-link" href={`/urnas/${product.slug}`}>Ver modelo <span aria-hidden="true">↗</span></Link>
       </div>
@@ -29,17 +27,18 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
 }
 
 export function ProductGrid({ products }: { products: Product[] }) {
-  return <div className="product-grid">{products.map((product, index) => <ProductCard key={product.slug} product={product} index={index} />)}</div>;
+  return <div className="product-grid">{products.map((product) => <ProductCard key={product.slug} product={product} />)}</div>;
 }
 
 export function CTASection() {
   return (
     <section className="cta-section">
       <div className="shell cta-inner">
-        <p className="eyebrow">Estamos para acompañarte</p>
-        <h2>Conocé más sobre nuestras urnas.</h2>
-        <p>Consultanos para recibir novedades cuando los modelos y sus características sean confirmados.</p>
-        <Link className="button button-light" href="/contacto">Hacer una consulta</Link>
+        <div className="cta-copy">
+          <h2>¿Querés conocer más sobre nuestras urnas?</h2>
+          <p>Contactanos para conocer los modelos, opciones y características disponibles.</p>
+        </div>
+        <Link className="button button-light cta-button" href="/contacto">Hacer una consulta</Link>
       </div>
     </section>
   );
@@ -48,11 +47,11 @@ export function CTASection() {
 export function VideoSection() {
   return (
     <section className="section video-section"><div className="shell">
-      <SectionHeading eyebrow="Próximamente" title="Una historia que permanece."><p>Este espacio recibirá el video promocional de la marca.</p></SectionHeading>
+      <SectionHeading eyebrow="El recuerdo" title="Una historia que permanece."><p>Imágenes y momentos compartidos encuentran un lugar junto a la memoria.</p></SectionHeading>
       {siteConfig.videoUrl ? (
         <video className="video-player" src={siteConfig.videoUrl} poster={siteConfig.videoPoster} controls playsInline muted preload="metadata">Tu navegador no puede reproducir este video.</video>
       ) : (
-        <div className="video-placeholder"><Image src={siteConfig.videoPoster} alt="Poster provisorio del futuro video promocional" fill sizes="92vw" className="cover" /><span className="video-icon" aria-hidden="true">▶</span><p>Video en preparación</p></div>
+        <div className="video-placeholder"><Image src={siteConfig.videoPoster} alt="Una urna integrada en un ambiente cálido del hogar" fill sizes="92vw" className="cover" /></div>
       )}
     </div></section>
   );

@@ -1,0 +1,234 @@
+Quiero que uses la siguiente información empresarial como base de contenido para la web de ShantiBond.
+
+IMPORTANTE:
+Todo texto que esté entre comillas corresponde a contenido textual existente de la empresa y debe conservarse exactamente, sin reescribirlo, resumirlo ni reinterpretarlo.
+
+No tomes ninguna referencia estética de otra web.
+No copies layouts, colores, tipografías, componentes, estructuras visuales ni estilos.
+Trabajá únicamente con la información de negocio, producto, posicionamiento y modelo comercial.
+
+SHANTIBOND
+
+Concepto / claim:
+
+“La conexión profunda.”
+
+Descripción institucional:
+
+“Licencia de marca exclusiva para el nuevo memorial audiovisual de mascotas.”
+
+MODELO DE NEGOCIO
+
+Título existente:
+
+“Licencia de marca exclusiva”
+
+Texto existente:
+
+“ShantiBond no exporta producto terminado ni vende a través de intermediarios genéricos. Operamos con licencias de marca exclusivas, territorio por territorio, con un socio local por mercado.”
+
+Este concepto debe ser central en la nueva web.
+
+ShantiBond desarrolla su expansión mediante licencias de marca exclusivas por territorio y trabaja con un socio local en cada mercado.
+
+No presentar este modelo como franquicia salvo confirmación expresa del cliente.
+
+LO QUE APORTA SHANTIBOND
+
+Conservar exactamente estos conceptos:
+
+“Marca y diseño industrial registrados”
+
+“Estándar de calidad y ficha técnica del producto”
+
+“Identidad de marca y materiales comerciales”
+
+“Acceso directo al proveedor del módulo audiovisual”
+
+“Exclusividad territorial”
+
+LO QUE APORTA EL SOCIO LICENCIATARIO
+
+Conservar exactamente estos conceptos:
+
+“Fabricación local o regional”
+
+“Certificación y cumplimiento normativo del mercado”
+
+“Red de distribución y canal comercial propio”
+
+“Capital de trabajo”
+
+“Compromiso con el estándar de calidad de la marca”
+
+PROCESO
+
+Título existente:
+
+“Cómo avanza una alianza”
+
+El proceso se divide en cinco etapas.
+
+1. “Primer contacto”
+
+Texto existente:
+
+“Nos contás tu mercado, tu canal y tu capacidad de fabricación o distribución.”
+
+2. “Conversación exploratoria”
+
+Texto existente:
+
+“Evaluamos juntos el ajuste, bajo confidencialidad.”
+
+3. “Análisis de mercado”
+
+Texto existente:
+
+“Revisamos volumen potencial, canal y condiciones locales.”
+
+4. “Acuerdo de licencia”
+
+Texto existente:
+
+“Definimos territorio, estándar de calidad y condiciones comerciales.”
+
+5. “Lanzamiento”
+
+Texto existente:
+
+“Salís al mercado como parte de una marca internacional en expansión.”
+
+SOCIOS FUNDADORES
+
+Título / concepto existente:
+
+“Los primeros, socios fundadores de su mercado”
+
+Texto existente:
+
+“Los primeros socios de cada territorio se incorporan como socios fundadores: acompañan el crecimiento de la marca desde el inicio y ayudan a definir el estándar que seguirán los que vengan después.”
+
+No agregar beneficios económicos, societarios o contractuales que no estén explícitamente definidos.
+
+CAPTACIÓN DE SOCIOS
+
+Título existente:
+
+“Contanos sobre tu territorio”
+
+Texto existente:
+
+“Cada conversación empieza igual: entender tu mercado, tu canal y tu capacidad real de fabricación o distribución.”
+
+CTA existente:
+
+“Iniciar la conversación”
+
+Este enfoque debe conservarse como uno de los principales objetivos comerciales de la web.
+
+POSICIONAMIENTO COMERCIAL
+
+ShantiBond no busca simplemente intermediarios genéricos.
+
+El modelo se basa en seleccionar un socio local capaz de desarrollar cada mercado.
+
+El análisis del potencial socio debe considerar principalmente:
+
+- mercado;
+- canal;
+- capacidad de fabricación o distribución;
+- cumplimiento normativo;
+- red comercial;
+- capital de trabajo;
+- capacidad operativa;
+- compromiso con los estándares de calidad de la marca.
+
+EXPANSIÓN
+
+La expansión se realiza territorio por territorio.
+
+ShantiBond aporta la marca, el diseño, los estándares, los materiales comerciales y el acceso al proveedor del módulo audiovisual.
+
+El socio local aporta la capacidad industrial, comercial, financiera y operativa necesaria para desarrollar su mercado.
+
+No inventar territorios disponibles, países actuales, cantidades de licencias, valores de inversión ni condiciones contractuales si no fueron informados por el cliente.
+
+PRODUCTO
+
+La información disponible define el producto como:
+
+“nuevo memorial audiovisual de mascotas”
+
+Existe un “módulo audiovisual” asociado al producto.
+
+No inventar:
+
+- funcionamiento técnico;
+- tecnología utilizada;
+- materiales;
+- dimensiones;
+- sistema de reproducción;
+- conectividad;
+- instalación;
+- duración;
+- fabricación;
+- certificaciones concretas;
+- precio;
+- modelo de compra.
+
+Si alguna de esas cuestiones es necesaria para la nueva web, marcarla como:
+
+[INFORMACIÓN A DEFINIR CON EL CLIENTE]
+
+MARCA Y PROPIEDAD INTELECTUAL
+
+La información existente indica:
+
+“Marca y diseño industrial registrados”
+
+En el pie también aparece:
+
+“Marca y diseño registrados / en proceso de registro según territorio.”
+
+No convertir estas frases en afirmaciones legales más amplias de las que expresan literalmente.
+
+CONTACTO
+
+Email:
+
+info@shantibond.com
+
+Teléfono:
+
++54 911 6115-7358
+
+COPY DEL FOOTER
+
+“La conexión profunda.”
+
+“Licencia de marca exclusiva para el nuevo memorial audiovisual de mascotas.”
+
+“© 2026 ShantiBond. Todos los derechos reservados.”
+
+“Marca y diseño registrados / en proceso de registro según territorio.”
+
+REGLAS PARA LA NUEVA WEB
+
+1. Todo texto entre comillas debe conservarse textual.
+2. No reescribir esos textos sin indicación expresa.
+3. Podés reorganizar dónde aparecen dentro de la nueva arquitectura.
+4. Podés crear textos de conexión entre esos contenidos si son necesarios.
+5. Los textos nuevos no deben contradecir la información existente.
+6. No inventar información comercial, técnica, legal ni empresarial.
+7. No asumir que es una franquicia.
+8. Hablar de “licencia de marca exclusiva”.
+9. Mantener clara la diferencia entre ShantiBond y el socio licenciatario.
+10. Hacer de la expansión territorial y la captación de socios una parte central del sitio.
+11. Cualquier vacío de información debe marcarse como:
+[INFORMACIÓN A DEFINIR CON EL CLIENTE]
+12. Esta información debe ser considerada la fuente de verdad para el contenido del proyecto.
+
+No diseñes todavía basándote en la web anterior.
+
+Primero incorporá esta información al proyecto y preservá todos los textos citados exactamente como fueron entregados.

@@ -1,0 +1,22 @@
+/* Glass and editorial density, without changing section-scroll geometry. */
+.site-header .header-inner, .site-header.is-scrolled .header-inner, .site-header.over-light.at-top .header-inner, .site-header.menu-open .header-inner { background: rgba(252,250,246,.56); backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%); border: 1px solid rgba(255,255,255,.65); box-shadow: inset 0 1px 0 #ffffff90, 0 8px 32px #171a1712; border-radius: 999px; }
+.home-main figure { border-radius: 24px; overflow: hidden; }
+.home-main .memorial-studio img { object-fit: cover; }
+.home-main .partner-cards li { background: #ffffff06; border: 1px solid #c7cdb321; border-radius: 16px; padding: 1.5rem; font-size: 1.1rem; }
+.partner-cards { display: grid; gap: .8rem; }
+.home-main .alliance-steps { gap: 1rem; border: 0; }
+.home-main .alliance-steps .step-card { border: 1px solid #b69a752e; border-radius: 20px; padding: 2rem 1.5rem; background: linear-gradient(145deg,#fffaf0,#e9dfd0); min-height: 18rem; }
+.home-main .brand-contact { border: 1px solid #ffffff3d; border-radius: 24px; padding: clamp(2rem,4vw,4rem); background: #ffffff0b; width: 100%; }
+.home-main .brand-contact .eyebrow { margin: 0 0 1rem; }
+@media(min-width:1024px) {
+ .home-main .intro-grid { grid-template-columns: 1.4fr .7fr; gap: 3rem 6vw; }
+ .home-main .intro-grid .concept-equation { grid-column: 1 / -1; }
+ .home-main .steps-section > .shell { gap: 3svh; }
+ .home-main .cta-inner { grid-template-columns: 1.1fr .8fr; gap: 6vw; }
+ .home-main .partner-grid { grid-template-columns: 1fr 1fr; gap: 5vw; }
+ .home-main .partner-cards { min-height: 58svh; align-content: center; }
+}
+@media(max-width:1023px) {
+ .home-main .alliance-steps .step-card { min-height: 0; }
+ .home-main figure { border-radius: 18px; }
+}

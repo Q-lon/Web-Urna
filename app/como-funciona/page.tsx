@@ -1,6 +1,2 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import { content } from "@/data/content";
-import { CTASection } from "@/components/ui";
-export const metadata: Metadata = { title: "Cómo funciona" };
-export default function HowPage() { return <main><section className="page-hero"><div className="shell"><p className="eyebrow">Cómo funciona</p><h1>El recuerdo, acompañado de imágenes.</h1><p>Una explicación conceptual y deliberadamente simple mientras se validan las características del producto.</p></div></section><section className="section"><div className="shell process-list">{content.steps.map(([number, title, description], index) => <article key={number} className="process-row"><span>{number}</span><div><h2>{title}</h2><p>{description}</p></div><figure><Image src={index === 1 ? "/images/products/urn-studio-provisional.png" : "/images/lifestyle/urn-home-provisional.png"} alt="Representación provisoria del proceso conceptual" fill sizes="(max-width: 800px) 92vw, 30vw" className="cover" /></figure></article>)}</div><p className="shell validation-note">PENDING_CLIENT_VALIDATION: el proceso definitivo se documentará cuando el funcionamiento del producto sea confirmado.</p></section><CTASection /></main>; }
+import { redirect } from "next/navigation";
+export default function Page() { redirect("/#proceso"); }

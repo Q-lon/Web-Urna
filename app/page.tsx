@@ -1,38 +1,33 @@
+"use client";
+import { useLanguage } from "@/components/language-provider";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, MoveRight } from "lucide-react";
-import { content } from "@/data/content";
-import { faqs } from "@/data/faqs";
-import { products } from "@/data/products";
-import { FAQAccordion } from "@/components/faq-accordion";
-import { CTASection, ProductGrid, SectionHeading, VideoSection } from "@/components/ui";
+import { shantiBond as sourceBrand } from "@/data/shantibond";
+import { EditorialConcepts } from "@/components/editorial-accordions";
+import { SectionAlignment } from "@/components/section-alignment";
+import { ProductStory, BrandExpansion } from "@/components/client-story";
+import { PartnerContact } from "@/components/partner-contact";
 
 export default function Home() {
-  return <main>
-    <section className="hero">
-      <div className="hero-image"><Image src="/images/lifestyle/hero-urn-provisional.png" alt="Representación provisoria de una urna para mascotas con display integrado en un ambiente sereno" fill priority sizes="100vw" className="cover" /><div className="hero-scrim" /></div>
-      <div className="shell hero-content"><div className="hero-copy"><p className="eyebrow eyebrow-light">{content.hero.eyebrow}</p><h1>{content.hero.title}</h1><p>{content.hero.description}</p><div className="button-row"><Link href="#la-urna" className="button button-light">Conocer la urna</Link><Link href="/como-funciona" className="button button-ghost-light">Cómo funciona <MoveRight aria-hidden="true" /></Link></div></div><a className="scroll-cue" href="#la-urna"><ArrowDown aria-hidden="true" /><span>Descubrir</span></a></div>
-      <span className="image-note">Visualización provisoria del producto</span>
+  const { t, translate } = useLanguage();
+  const brand = translate(sourceBrand);
+  return <main className="home-main editorial-home">
+    <SectionAlignment />
+    <section id="inicio" className="hero">
+      <div className="hero-image"><Image src="/images/lifestyle/shanti-diffused-hero.png" alt={t("Representación del memorial ShantiBond sobre mármol, con luz cálida y fondo difuminado")} fill priority sizes="100vw" className="cover" /><div className="hero-scrim" /></div>
+      <div className="shell hero-content"><div className="hero-copy"><Image className="hero-brand" src="/images/brand/shantibond-logo-original.png" alt="ShantiBond" width={156} height={118} priority /><h1>{brand.claim}</h1><p>{brand.description}</p><div className="button-row"><a href="#producto" className="button button-light">{t("Conocer el Producto")}</a><a href="#contacto" className="button button-ghost-light">{t("Ser socio")}</a></div></div></div>
     </section>
-
-    <section id="la-urna" className="section intro-section"><div className="shell editorial-grid"><p className="eyebrow">El concepto</p><div><h2 className="display-title">{content.intro.title}</h2><p className="lead">{content.intro.body}</p></div><div className="concept-equation" aria-label="Urna más display más imágenes"><span>Urna física</span><b aria-hidden="true">+</b><span>Display integrado</span><b aria-hidden="true">+</b><span>Recuerdos visuales</span></div></div></section>
-
-    <section className="section showcase-section"><div className="shell showcase-grid"><div className="showcase-sticky"><p className="eyebrow">El objeto</p><h2 className="display-title">Diseño que guarda una historia.</h2><p>Una presencia serena para el hogar. La pantalla forma parte de la urna: acompaña al objeto sin convertirlo en un dispositivo.</p><div className="feature-list"><span>Diseño</span><span>Recuerdo</span><span>Pantalla integrada</span><span>Personalización</span></div><Link href="/urnas" className="text-link">Conocer los modelos <span aria-hidden="true">↗</span></Link></div><figure className="showcase-image"><Image src="/images/products/urn-studio-provisional.png" alt="Vista conceptual frontal de una urna con display integrado" fill sizes="(max-width: 800px) 92vw, 50vw" className="cover" /><figcaption>Concepto visual · producto sujeto a definición</figcaption></figure></div></section>
-
-    <section className="section display-section"><div className="shell display-grid"><figure className="wide-image"><Image src="/images/lifestyle/urn-home-provisional.png" alt="Representación de una urna con pantalla integrada mostrando una mascota" fill sizes="(max-width: 800px) 100vw, 56vw" className="cover" /></figure><div className="display-copy"><p className="eyebrow">El display</p><h2>Imágenes que también forman parte del recuerdo.</h2><p>La urna incorpora un display integrado pensado para acompañar el objeto físico con fotografías y momentos compartidos.</p><span className="pending-label">Características técnicas próximamente</span></div></div></section>
-
-    <section className="section steps-section"><div className="shell"><SectionHeading eyebrow="Cómo funciona" title="Tres gestos simples para darle un lugar a su historia." /><div className="steps-grid">{content.steps.map(([number, title, description]) => <article key={number} className="step-card"><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div><p className="validation-note">Proceso conceptual pendiente de validación con el cliente.</p></div></section>
-
-    <section className="section models-section"><div className="shell"><SectionHeading eyebrow="Colección provisoria" title="Formas para una presencia íntima y personal."><p>Estos modelos son demostrativos. No representan materiales, medidas ni disponibilidad definitivos.</p></SectionHeading><ProductGrid products={products} /><div className="center-action"><Link href="/urnas" className="button button-outline">Ver todos los modelos</Link></div></div></section>
-
-    <section className="section design-story"><div className="shell design-story-grid"><div className="design-story-copy"><p className="eyebrow eyebrow-light">Diseño para habitar</p><h2>Pensada para formar parte de tu espacio.</h2><p>Un objeto que conserva un recuerdo sin esconderlo. Su lenguaje sereno busca integrarse a la vida cotidiana con respeto y naturalidad.</p></div><div className="design-story-line"><span>01</span><p>Primero, un objeto de diseño.</p></div><div className="design-story-line"><span>02</span><p>Luego, una presencia visual.</p></div></div></section>
-
-    <section className="section personalization-section"><div className="shell editorial-grid"><p className="eyebrow">Personalización</p><div><h2 className="display-title">Un recuerdo tan singular como su historia.</h2><p className="lead">Estamos explorando distintas maneras de hacer cada pieza personal. Las opciones finales todavía no están confirmadas.</p></div><div className="personalization-list">{content.personalization.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p><span aria-hidden="true">—</span></div>)}</div></div></section>
-
-    <VideoSection />
-
-    <section className="section philosophy-section"><div className="shell philosophy-inner"><p className="eyebrow">Nuestra mirada</p><blockquote>“Las imágenes, los gestos y los momentos compartidos construyen una historia. Esta urna busca darle a ese recuerdo un lugar físico y visual.”</blockquote></div></section>
-    <section className="section faq-preview"><div className="shell faq-grid"><SectionHeading eyebrow="Preguntas frecuentes" title="Lo que sabemos hasta ahora."><p>Las respuestas técnicas se completarán cuando cada modelo sea validado.</p><Link className="text-link" href="/preguntas-frecuentes">Ver todas las preguntas <span aria-hidden="true">↗</span></Link></SectionHeading><FAQAccordion items={faqs.slice(0, 5)} /></div></section>
-    <CTASection />
+    <section id="producto" className="section showcase-section"><div className="shell product-video-layout">
+      <div className="product-heading"><div><p className="eyebrow">{t("Producto")}</p><h2 className="display-title">{t("El producto")}</h2></div><p>{t("Una urna memorial de madera noble con pantalla audiovisual integrada, pensada para durar generaciones y para fabricarse bajo un mismo estándar en cualquier mercado.")}</p></div>
+      <div className="product-video-body"><figure className="product-video-frame"><div className="video-placeholder" aria-hidden="true"><span className="video-placeholder-symbol">▷</span></div><figcaption className="video-preview-note">{t("Acá va el video en esta sección y vemos cómo se acompaña.")}</figcaption></figure>
+      <div className="product-materials"><p className="eyebrow">{t("Materiales y forma")}</p><h3>{t("Madera noble, calidez artesanal")}</h3><p>{t("Trabajamos con maderas nobles seleccionadas por su calidez y durabilidad. Cada licenciatario fabrica localmente a partir de la ficha técnica y el estándar mínimo de calidad de la marca, lo que garantiza una misma experiencia allí donde ShantiBond esté presente.")}</p><a href="#contacto" className="text-link">{t("Conocer más")} <span aria-hidden="true">↗</span></a></div></div>
+    </div></section>
+    <ProductStory />
+    <section id="licencia" className="section intro-section"><div className="shell editorial-grid intro-grid"><div><p className="eyebrow">{t("Expansión territorial")}</p><h2 className="display-title">{brand.business.title}</h2><p className="lead">{brand.business.description}</p></div></div></section>
+    <section id="alianzas" className="section display-section"><div className="shell display-grid"><figure className="wide-image"><Image src="/images/products/shanti-editorial-detail.png" alt={t("Detalle de la placa Shanti y la madera barnizada; representación generada")} fill sizes="(max-width: 980px) 92vw, 56vw" className="cover" /></figure><div className="display-copy"><p className="eyebrow">{t("La alianza")}</p><h2>{t("Lo que aporta ShantiBond")}</h2><EditorialConcepts items={brand.business.brandContributions} /></div></div></section>
+    <section id="socio" className="section design-story"><div className="shell design-story-grid partner-grid"><div className="design-story-copy"><p className="eyebrow eyebrow-light">{t("Un socio local por mercado")}</p><h2>{t("Lo que aporta el socio licenciatario")}</h2><div className="partner-signature desktop-detail"><p>{t("TERRITORIO / SOCIO LOCAL")}<br />{t("Una presencia propia.")}<br />{t("Una identidad compartida.")}</p></div></div><ul className="brand-contributions partner-cards">{brand.business.partnerContributions.map((item) => <li key={item}><span>{item}</span></li>)}</ul></div></section>
+    <section id="proceso" className="section steps-section"><div className="shell"><div className="section-heading"><p className="eyebrow">{t("El proceso")}</p><h2>{brand.process.title}</h2></div><div className="steps-grid alliance-steps">{brand.process.steps.map((step, i) => <article key={step.title} className="step-card"><span className="step-number" aria-hidden="true">0{i + 1}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}</div></div></section>
+    <section id="fundadores" className="section philosophy-section"><div className="founder-image desktop-detail" aria-hidden="true" /><div className="shell philosophy-inner founders-copy"><p className="eyebrow">{t("Socios fundadores")}</p><h2 className="display-title">{brand.founders.title}</h2><p className="lead">{brand.founders.description}</p></div></section>
+    <BrandExpansion />
+    <section id="contacto" className="cta-section"><div className="shell cta-inner"><div className="cta-copy"><p className="eyebrow eyebrow-light">{t("Contacto")}</p><h2>{t("Conversemos.")}</h2><p>{t("Atendemos consultas de mayoristas, distribuidores, cadenas del sector funerario y veterinario, y grandes clientes interesados en un territorio de licencia exclusiva.")}</p><div className="client-contact-links"><a href="mailto:info@shantibond.com"><small>Email</small>{brand.contact.email}</a><a href="https://wa.me/5491161157358" target="_blank" rel="noreferrer"><small>{t("Teléfono / WhatsApp")}</small>{brand.contact.phone}</a></div><p className="client-caption">{t("Antes de escribirnos: contanos tu tipo de negocio, territorio y capacidad de fabricación o distribución.")}</p></div><PartnerContact /></div></section>
   </main>;
 }

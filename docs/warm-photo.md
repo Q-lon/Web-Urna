@@ -1,0 +1,4 @@
+Método: image_gen integrado. Archivo final: public/images/products/shanti-warm.png
+
+Prompt final:
+Generate a new premium portrait 4:5 photograph. Both references ONLY physical design not composition. Same Shanti digital urn reddish varnished wood, substantial separate sloping lid with oval gold Shanti pet-logo plaque two screws, inclined black front panel inactive horizontal screen, two round buttons, left USB-A right small slot, beveled base and original squat proportions. Full object entirely visible with 15% breathing room. Camera frontal slightly left at screen level, warm intimate interior, urn resting on rich walnut console with soft ivory linen backdrop and out-of-focus amber evening light. No cement, no concrete, no grey plinth, no cold studio background. Refined warm editorial furniture photography, realistic controlled highlights, no additional components or text except Shanti plaque. Not the reference framing or angle.

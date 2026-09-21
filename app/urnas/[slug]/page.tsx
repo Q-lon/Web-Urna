@@ -1,9 +1,2 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import { products, getProduct } from "@/data/products";
-import { CTASection } from "@/components/ui";
-export function generateStaticParams() { return products.map(({ slug }) => ({ slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const product = getProduct((await params).slug); return { title: product ? `${product.name} — Modelo conceptual` : "Modelo" }; }
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) { const product = getProduct((await params).slug); if (!product) notFound(); return <main><section className="product-detail"><div className="shell product-detail-grid"><div className="product-gallery"><figure className="product-main-image"><Image src={product.images[0]} alt={`Vista provisoria de ${product.name}`} fill priority sizes="(max-width: 800px) 100vw, 55vw" className="cover" /><span className="prototype-badge">Imagen provisoria</span></figure><figure className="product-secondary-image"><Image src={product.images[1]} alt={`Contexto provisorio de ${product.name}`} fill sizes="(max-width: 800px) 100vw, 45vw" className="cover" /></figure></div><aside className="product-info"><Link href="/urnas" className="back-link">← Volver a modelos</Link><p className="eyebrow">Modelo conceptual</p><h1>{product.name}</h1><p className="lead">{product.description}</p><div className="pending-panel"><p>Información pendiente de validación</p>{["Material", "Dimensiones", "Display", "Colores", "Personalización", "Precio", "Disponibilidad"].map((label) => <div key={label}><span>{label}</span><b>A confirmar</b></div>)}</div><Link href="/contacto" className="button">Consultar por este modelo</Link></aside></div></section><CTASection /></main>; }
+import { redirect } from "next/navigation";
+export default function Page() { redirect("/#producto"); }
