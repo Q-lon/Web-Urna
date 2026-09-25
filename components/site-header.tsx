@@ -34,6 +34,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("inicio");
   const [darkSurface, setDarkSurface] = useState(false);
+  const [warmSurface, setWarmSurface] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
@@ -60,6 +61,7 @@ export function SiteHeader() {
       const headerMiddle = headerBox && headerBox.height > 0 ? headerBox.top + headerBox.height / 2 : 44;
       const behindHeader = sections.find(section => { const box = section.getBoundingClientRect(); return box.top <= headerMiddle && box.bottom > headerMiddle; });
       setDarkSurface(["modulo", "alianzas", "socio", "fundadores"].includes(behindHeader?.id ?? ""));
+      setWarmSurface(behindHeader?.id === "fundadores");
       const current = sections.find(section => { const box = section.getBoundingClientRect(); return box.top <= innerHeight * .45 && box.bottom > innerHeight * .45; });
       const groups: Record<string, string> = { socio: "alianzas", fundadores: "proceso", expansion: "licencia", modulo: "producto", origen: "origen" };
       if (current) setActive(groups[current.id] ?? current.id);
@@ -71,7 +73,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : "at-top"} ${pathname === "/" ? "over-hero" : "over-light"} ${open ? "menu-open" : ""} ${darkSurface ? "on-dark-surface" : ""}`}>
+    <header className={`site-header ${scrolled ? "is-scrolled" : "at-top"} ${pathname === "/" ? "over-hero" : "over-light"} ${open ? "menu-open" : ""} ${darkSurface ? "on-dark-surface" : ""} ${warmSurface ? "on-warm-surface" : ""}`}>
       <div className="shell header-inner">
         <a href="/#inicio" className="brand-link" aria-label={t("ShantiBond — Inicio")}><BrandMark showName={false} /></a>
         <nav className="desktop-nav" aria-label={t("Navegación principal")}>
@@ -79,6 +81,9 @@ export function SiteHeader() {
           <a className="button button-small nav-consult" href="/#contacto" aria-current={active === "contacto" ? "location" : undefined}>{t("Ser socio")}</a>
         </nav>
         <LanguageToggle />
+      </div>
+      <div className="mobile-header-controls">
+        <a href="/#inicio" className="brand-link" aria-label={t("ShantiBond — Inicio")}><BrandMark showName={false} /></a>
         <button
           ref={menuButton}
           className="menu-button"
