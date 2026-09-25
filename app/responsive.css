@@ -24,7 +24,7 @@
   .site-header .header-inner, .site-header.is-scrolled .header-inner, .site-header.over-light.at-top .header-inner, .site-header.menu-open .header-inner { width: calc(100% - var(--compact-gutter) * 2); max-width: none; min-height: 54px; grid-template-columns: 1fr auto 1fr; gap: 0; padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .site-header .header-inner > .language-toggle { display: none; }
   .site-header .brand-link { grid-column: 2; grid-row: 1; }
-  .site-header .menu-button { grid-column: 3; grid-row: 1; justify-self: end; }
+  .site-header .menu-button { grid-column: 1; grid-row: 1; justify-self: start; }
   .site-header.on-dark-surface .shanti-logo { filter: invert(1); }
   .site-header.on-dark-surface .menu-button { color: #f6f0e5 !important; }
   .mobile-nav .language-toggle { justify-self: center; margin-top: 1rem; color: #292822; }
