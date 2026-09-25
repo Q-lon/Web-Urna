@@ -23,7 +23,9 @@ export function PageMotion() {
     };
     const start = () => {
       stop();
-      if (reduced.matches) return;
+      // Mobile content stays visible from its first paint. Starting an opacity
+      // animation after intersection made already-visible text flash on Safari.
+      if (reduced.matches || compact.matches) return;
       const selector = ".home-main h1,.home-main h2,.home-main h3,.home-main p,.home-main blockquote,.home-main .step-number,.home-main .founder-number,.home-main .hero-brand,.home-main figure > img,.home-main .hero-image > img,.home-main .partner-cards,.home-main .partner-contact-form label,.home-main .button-row > a,.home-main .text-link,.home-main .editorial-accordion button,.home-main .partner-contact-form > button";
       const nodes = Array.from(document.querySelectorAll<HTMLElement>(selector));
       observer = new IntersectionObserver(entries => {

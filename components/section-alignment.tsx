@@ -18,14 +18,12 @@ export function SectionAlignment() {
       const height = viewport?.height ?? innerHeight;
       const current = scrollY;
       const maximum = root.scrollHeight - innerHeight;
-      // Only correct a small unfinished movement. Long sections also have an
-      // end position so their final lines remain reachable without jumping back.
+      // Align section starts only. An end target moves the heading underneath
+      // the fixed header and exposes the next section behind Safari's toolbar.
+      // Long sections keep ordinary scrolling so every line remains reachable.
       const targets = [...document.querySelectorAll<HTMLElement>('.home-main > section')]
-        .flatMap(section => {
-          const box = section.getBoundingClientRect();
-          const top = box.top + current;
-          return box.height > height + 2 ? [top, top + box.height - height] : [top];
-        }).map(top => Math.max(0, Math.min(maximum, top)));
+        .map(section => section.getBoundingClientRect().top + current)
+        .map(top => Math.max(0, Math.min(maximum, top)));
       const nearest = targets.sort((a, b) => Math.abs(a - current) - Math.abs(b - current))[0];
       if (nearest === undefined) return;
       const distance = Math.abs(nearest - current);
