@@ -200,19 +200,21 @@
   .home-main .cta-inner { gap: 2.5rem; }
 }
 
-/* Native alignment at scroll rest. Stable viewport units prevent browser chrome
-   from resizing sections during a gesture; content can grow beyond this minimum. */
+/* Use the stable large viewport so the section background also fills the area
+   behind mobile browser controls. Reserve their expansion below the content;
+   neither section heights nor snap targets change as the toolbar collapses. */
 @media (max-width: 1023px) {
   :root {
     --compact-header-space: calc(88px + env(safe-area-inset-top));
-    --compact-bottom-space: calc(clamp(48px, 7svh, 64px) + env(safe-area-inset-bottom));
+    --compact-browser-space: max(0px, calc(100lvh - 100svh));
+    --compact-bottom-space: calc(clamp(64px, 9svh, 88px) + env(safe-area-inset-bottom, 0px) + var(--compact-browser-space));
   }
   html { scroll-snap-type: y proximity; scroll-behavior: auto; scroll-padding: 0; }
   html:has(.menu-open), html:has(.partner-contact-form :focus) { scroll-snap-type: none; }
   .home-main > section,
   .home-main > .section,
   .home-main > .cta-section {
-    min-height: 100svh;
+    min-height: 100lvh;
     height: auto;
     max-height: none;
     scroll-margin: 0;
@@ -253,7 +255,7 @@
     box-shadow: none;
   }
   .editorial-home .hero {
-    min-height: 100svh;
+    min-height: 100lvh;
     padding-top: var(--compact-header-space);
     padding-bottom: 0;
   }
