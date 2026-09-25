@@ -27,7 +27,9 @@ export function SectionAlignment() {
       const nearest = targets.sort((a, b) => Math.abs(a - current) - Math.abs(b - current))[0];
       if (nearest === undefined) return;
       const distance = Math.abs(nearest - current);
-      if (distance < 3 || distance > Math.min(96, height * .14)) return;
+      // Catch a visibly unfinished section alignment, not only a tiny offset.
+      // Keep the middle of a long section free for reading.
+      if (distance < 3 || distance > Math.min(240, height * .32)) return;
       adjusting = true;
       window.scrollTo({ top: nearest, behavior: reduced.matches ? 'instant' : 'smooth' });
     };
@@ -37,7 +39,7 @@ export function SectionAlignment() {
       restTimer = setTimeout(() => {
         if (adjusting) { adjusting = false; return; }
         alignAtRest();
-      }, 280);
+      }, 380);
     };
     const interrupt = () => {
       clearTimeout(restTimer);
