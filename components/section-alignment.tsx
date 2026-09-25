@@ -5,6 +5,72 @@ import { useEffect } from "react";
 /** One desktop wheel gesture per slide, including the trackpad's momentum tail. */
 export function SectionAlignment() {
   useEffect(() => {
+    const compact = matchMedia("(max-width: 1023px)");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let restTimer: ReturnType<typeof setTimeout> | undefined;
+    let touching = false;
+    let adjusting = false;
+    const root = document.documentElement;
+    const alignAtRest = () => {
+      if (!compact.matches || touching || document.querySelector('.menu-open, .partner-contact-form :focus')) return;
+      const viewport = window.visualViewport;
+      if (viewport && viewport.scale !== 1) return;
+      const height = viewport?.height ?? innerHeight;
+      const current = scrollY;
+      const maximum = root.scrollHeight - innerHeight;
+      // Only correct a small unfinished movement. Long sections also have an
+      // end position so their final lines remain reachable without jumping back.
+      const targets = [...document.querySelectorAll<HTMLElement>('.home-main > section')]
+        .flatMap(section => {
+          const box = section.getBoundingClientRect();
+          const top = box.top + current;
+          return box.height > height + 2 ? [top, top + box.height - height] : [top];
+        }).map(top => Math.max(0, Math.min(maximum, top)));
+      const nearest = targets.sort((a, b) => Math.abs(a - current) - Math.abs(b - current))[0];
+      if (nearest === undefined) return;
+      const distance = Math.abs(nearest - current);
+      if (distance < 3 || distance > Math.min(96, height * .14)) return;
+      adjusting = true;
+      window.scrollTo({ top: nearest, behavior: reduced.matches ? 'instant' : 'smooth' });
+    };
+    const rest = () => {
+      clearTimeout(restTimer);
+      if (!compact.matches || touching) return;
+      restTimer = setTimeout(() => {
+        if (adjusting) { adjusting = false; return; }
+        alignAtRest();
+      }, 280);
+    };
+    const interrupt = () => {
+      clearTimeout(restTimer);
+      if (adjusting) window.scrollTo({ top: scrollY, behavior: 'instant' });
+      adjusting = false;
+    };
+    const touchStart = () => { touching = true; interrupt(); };
+    const touchEnd = () => { touching = false; rest(); };
+    const sync = () => { interrupt(); root.classList.toggle('compact-rest-alignment', compact.matches); };
+    sync();
+    compact.addEventListener('change', sync);
+    window.addEventListener('scroll', rest, { passive: true });
+    window.addEventListener('touchstart', touchStart, { passive: true });
+    window.addEventListener('touchend', touchEnd, { passive: true });
+    window.addEventListener('touchcancel', touchEnd, { passive: true });
+    window.addEventListener('wheel', interrupt, { passive: true });
+    window.addEventListener('resize', interrupt);
+    return () => {
+      interrupt();
+      root.classList.remove('compact-rest-alignment');
+      compact.removeEventListener('change', sync);
+      window.removeEventListener('scroll', rest);
+      window.removeEventListener('touchstart', touchStart);
+      window.removeEventListener('touchend', touchEnd);
+      window.removeEventListener('touchcancel', touchEnd);
+      window.removeEventListener('wheel', interrupt);
+      window.removeEventListener('resize', interrupt);
+    };
+  }, []);
+
+  useEffect(() => {
     const desktop = matchMedia("(min-width: 1024px) and (pointer: fine)");
     let timer: ReturnType<typeof setTimeout> | undefined;
     let frame = 0;

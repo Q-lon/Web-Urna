@@ -210,6 +210,7 @@
     --compact-bottom-space: calc(clamp(64px, 9svh, 88px) + env(safe-area-inset-bottom, 0px) + var(--compact-browser-space));
   }
   html { scroll-snap-type: y proximity; scroll-behavior: auto; scroll-padding: 0; }
+  html.compact-rest-alignment { scroll-snap-type: none; }
   html:has(.menu-open), html:has(.partner-contact-form :focus) { scroll-snap-type: none; }
   .home-main > section,
   .home-main > .section,
@@ -265,6 +266,8 @@
     min-height: clamp(240px, 65vw, 380px);
   }
   .editorial-home #fundadores .founders-copy { padding-block: 0; }
+  .editorial-home #producto .text-link { border-bottom: 0; }
+  .editorial-home #producto .text-link::after { content: none; }
 }
 
 @media (max-width: 699px) {
